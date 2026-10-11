@@ -3,7 +3,7 @@ import { api } from "./fetchClient";
 import { landingMockData } from "./landing-mock-data";
 
 const LANDING_BASE = "/api/landing/api/v1";
-const USE_MOCK_DATA = process.env.NEXT_PUBLIC_LANDING_MOCK_DATA?.trim().toLowerCase() === "yes";
+const USE_MOCK_DATA = "yes";
 
 interface PaginatedResponse<T> {
   count: number;
