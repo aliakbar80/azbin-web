@@ -92,7 +92,7 @@ export default async function DynamicPage({
               <path strokeLinecap="round" strokeLinejoin="round" d={page.icon} />
             </svg>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
             {page.title}
           </h1>
           <p className="text-white/40 text-lg">{page.subtitle}</p>

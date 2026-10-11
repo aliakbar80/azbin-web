@@ -1,119 +1,59 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "./fetchClient";
-import type {
-  LandingService,
-  LandingFeature,
-  LandingProperty,
-  LandingStat,
-  LandingTestimonial,
-  LandingCity,
-  LandingTimeline,
-  LandingGallery,
-  LandingPropertyType,
-} from "./landing-types";
+import { landingMockData } from "./landing-mock-data";
 
 const LANDING_BASE = "/api/landing/api/v1";
+const USE_MOCK_DATA = process.env.NEXT_PUBLIC_LANDING_MOCK_DATA?.trim().toLowerCase() === "yes";
 
 interface PaginatedResponse<T> {
   count: number;
   results: T[];
 }
 
-export function useLandingServices() {
-  return useQuery<LandingService[]>({
-    queryKey: ["landing-services"],
+function useLandingQuery<T>(queryKey: string, endpoint: string, mockData: T[]) {
+  return useQuery<T[]>({
+    queryKey: [queryKey],
     queryFn: async () => {
-      const res = await api.get<PaginatedResponse<LandingService>>(`${LANDING_BASE}/services`);
+      if (USE_MOCK_DATA) return mockData;
+      const res = await api.get<PaginatedResponse<T>>(`${LANDING_BASE}/${endpoint}`);
       return res.results || [];
     },
     staleTime: 5 * 60 * 1000,
   });
+}
+
+export function useLandingServices() {
+  return useLandingQuery("landing-services", "services", landingMockData.services);
 }
 
 export function useLandingFeatures() {
-  return useQuery<LandingFeature[]>({
-    queryKey: ["landing-features"],
-    queryFn: async () => {
-      const res = await api.get<PaginatedResponse<LandingFeature>>(`${LANDING_BASE}/features`);
-      return res.results || [];
-    },
-    staleTime: 5 * 60 * 1000,
-  });
+  return useLandingQuery("landing-features", "features", landingMockData.features);
 }
 
 export function useLandingProperties() {
-  return useQuery<LandingProperty[]>({
-    queryKey: ["landing-properties"],
-    queryFn: async () => {
-      const res = await api.get<PaginatedResponse<LandingProperty>>(`${LANDING_BASE}/properties`);
-      return res.results || [];
-    },
-    staleTime: 5 * 60 * 1000,
-  });
+  return useLandingQuery("landing-properties", "properties", landingMockData.properties);
 }
 
 export function useLandingStats() {
-  return useQuery<LandingStat[]>({
-    queryKey: ["landing-stats"],
-    queryFn: async () => {
-      const res = await api.get<PaginatedResponse<LandingStat>>(`${LANDING_BASE}/stats`);
-      return res.results || [];
-    },
-    staleTime: 5 * 60 * 1000,
-  });
+  return useLandingQuery("landing-stats", "stats", landingMockData.stats);
 }
 
 export function useLandingTestimonials() {
-  return useQuery<LandingTestimonial[]>({
-    queryKey: ["landing-testimonials"],
-    queryFn: async () => {
-      const res = await api.get<PaginatedResponse<LandingTestimonial>>(`${LANDING_BASE}/testimonials`);
-      return res.results || [];
-    },
-    staleTime: 5 * 60 * 1000,
-  });
+  return useLandingQuery("landing-testimonials", "testimonials", landingMockData.testimonials);
 }
 
 export function useLandingCities() {
-  return useQuery<LandingCity[]>({
-    queryKey: ["landing-cities"],
-    queryFn: async () => {
-      const res = await api.get<PaginatedResponse<LandingCity>>(`${LANDING_BASE}/cities`);
-      return res.results || [];
-    },
-    staleTime: 5 * 60 * 1000,
-  });
+  return useLandingQuery("landing-cities", "cities", landingMockData.cities);
 }
 
 export function useLandingTimeline() {
-  return useQuery<LandingTimeline[]>({
-    queryKey: ["landing-timeline"],
-    queryFn: async () => {
-      const res = await api.get<PaginatedResponse<LandingTimeline>>(`${LANDING_BASE}/timeline`);
-      return res.results || [];
-    },
-    staleTime: 5 * 60 * 1000,
-  });
+  return useLandingQuery("landing-timeline", "timeline", landingMockData.timeline);
 }
 
 export function useLandingGallery() {
-  return useQuery<LandingGallery[]>({
-    queryKey: ["landing-gallery"],
-    queryFn: async () => {
-      const res = await api.get<PaginatedResponse<LandingGallery>>(`${LANDING_BASE}/gallery`);
-      return res.results || [];
-    },
-    staleTime: 5 * 60 * 1000,
-  });
+  return useLandingQuery("landing-gallery", "gallery", landingMockData.gallery);
 }
 
 export function useLandingPropertyTypes() {
-  return useQuery<LandingPropertyType[]>({
-    queryKey: ["landing-property-types"],
-    queryFn: async () => {
-      const res = await api.get<PaginatedResponse<LandingPropertyType>>(`${LANDING_BASE}/property-types`);
-      return res.results || [];
-    },
-    staleTime: 5 * 60 * 1000,
-  });
+  return useLandingQuery("landing-property-types", "property-types", landingMockData.propertyTypes);
 }

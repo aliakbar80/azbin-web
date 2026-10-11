@@ -286,7 +286,7 @@ body {
 
 /* ─── Section Padding ─── */
 .landing-section-padding {
-  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  padding-inline: clamp(1.5rem, 5vw, 6rem);
 }
 
 /* ─── Loader ─── */

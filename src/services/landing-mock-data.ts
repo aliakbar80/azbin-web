@@ -1,0 +1,75 @@
+import type {
+  LandingCity,
+  LandingFeature,
+  LandingGallery,
+  LandingProperty,
+  LandingPropertyType,
+  LandingService,
+  LandingStat,
+  LandingTestimonial,
+  LandingTimeline,
+} from "./landing-types";
+
+export const landingMockData = {
+  services: [
+    { id: 1, title: "کارشناسی رسمی اسناد", description: "بررسی اصالت و زنجیره مالکیت اسناد ملکی با گزارش دقیق و قابل استناد.", color: "#D4A843", features: ["تأیید مالکیت", "بررسی اصالت سند", "زنجیره سند"], buildingFloors: 8, order: 1 },
+    { id: 2, title: "ارزیابی رسمی ملک", description: "برآورد ارزش روز ملک بر پایه موقعیت، مشخصات و معاملات منطقه.", color: "#14B8A6", features: ["قیمت‌گذاری کارشناسی", "تحلیل منطقه", "گزارش رسمی"], buildingFloors: 6, order: 2 },
+    { id: 3, title: "کارشناسی ساختمان", description: "بازدید تخصصی بنا و بررسی وضعیت سازه، تأسیسات و کیفیت اجرا.", color: "#06B6D4", features: ["بازرسی سازه", "بررسی تأسیسات", "گزارش فنی"], buildingFloors: 10, order: 3 },
+    { id: 4, title: "کارشناسی مجوزها", description: "بررسی مدارک و انطباق مجوزهای ساخت با ضوابط و مشخصات ملک.", color: "#D4A843", features: ["بررسی پروانه", "انطباق با ضوابط", "کنترل مدارک"], buildingFloors: 5, order: 4 },
+    { id: 5, title: "کارشناسی اراضی", description: "تحلیل موقعیت، کاربری و ارزش اراضی با در نظر گرفتن شرایط محلی.", color: "#14B8A6", features: ["ارزیابی زمین", "تحلیل موقعیت", "گزارش توجیهی"], buildingFloors: 4, order: 5 },
+    { id: 6, title: "پرونده دیجیتال ملک", description: "دسترسی امن و یکپارچه به مدارک، سوابق و گزارش‌های کارشناسی.", color: "#06B6D4", features: ["آرشیو دیجیتال", "ذخیره امن", "دسترسی آسان"], buildingFloors: 7, order: 6 },
+  ] satisfies LandingService[],
+  features: [
+    { id: "report", title: "گزارش رسمی", subtitle: "قابل ارائه", description: "گزارش کارشناسی ساختاریافته برای تصمیم‌گیری مطمئن و ارائه به مراجع مربوط.", color: "#14B8A6", order: 1 },
+    { id: "match", title: "انتخاب کارشناس مناسب", subtitle: "متخصص هر حوزه", description: "درخواست شما به کارشناسی متناسب با نوع ملک و محدوده جغرافیایی ارجاع می‌شود.", color: "#06B6D4", order: 2 },
+    { id: "track", title: "پیگیری شفاف", subtitle: "در جریان بمانید", description: "وضعیت درخواست و مراحل انجام کارشناسی را در حساب کاربری خود دنبال کنید.", color: "#D4A843", order: 3 },
+    { id: "secure", title: "حفظ امنیت اطلاعات", subtitle: "محرمانه و امن", description: "مدارک و اطلاعات شما در فرایند کارشناسی با دسترسی کنترل‌شده نگهداری می‌شوند.", color: "#14B8A6", order: 4 },
+  ] satisfies LandingFeature[],
+  properties: [
+    { id: 1, type: "آپارتمان مسکونی", price: "۸,۵۰۰,۰۰۰,۰۰۰", priceRaw: 8500000000, area: "۱۲۰ متر", areaRaw: 120, rooms: "۳ خواب", location: "تهران، ولنجک", city: "تهران", district: "ولنجک", color: "#D4A843", features: ["پارکینگ", "انباری", "آسانسور"], expertScore: "۹.۲", expertScoreRaw: 9.2, status: "verified", order: 1 },
+    { id: 2, type: "ویلای شهرکی", price: "۱۲,۲۰۰,۰۰۰,۰۰۰", priceRaw: 12200000000, area: "۲۸۰ متر", areaRaw: 280, rooms: "۴ خواب", location: "مازندران، نوشهر", city: "نوشهر", district: "سیسنگان", color: "#14B8A6", features: ["حیاط اختصاصی", "پارکینگ", "تراس"], expertScore: "۹.۵", expertScoreRaw: 9.5, status: "verified", order: 2 },
+    { id: 3, type: "واحد اداری", price: "۶,۷۵۰,۰۰۰,۰۰۰", priceRaw: 6750000000, area: "۹۰ متر", areaRaw: 90, rooms: "۲ اتاق", location: "تهران، ونک", city: "تهران", district: "ونک", color: "#06B6D4", features: ["سند اداری", "لابی", "دسترسی مترو"], expertScore: "۸.۹", expertScoreRaw: 8.9, status: "verified", order: 3 },
+    { id: 4, type: "آپارتمان نوساز", price: "۵,۹۰۰,۰۰۰,۰۰۰", priceRaw: 5900000000, area: "۱۰۵ متر", areaRaw: 105, rooms: "۲ خواب", location: "اصفهان، مرداویج", city: "اصفهان", district: "مرداویج", color: "#D4A843", features: ["پارکینگ", "انباری", "بالکن"], expertScore: "۹.۱", expertScoreRaw: 9.1, status: "verified", order: 4 },
+    { id: 5, type: "زمین مسکونی", price: "۴,۴۰۰,۰۰۰,۰۰۰", priceRaw: 4400000000, area: "۳۰۰ متر", areaRaw: 300, rooms: "—", location: "شیراز، معالی‌آباد", city: "شیراز", district: "معالی‌آباد", color: "#14B8A6", features: ["بر خیابان", "سند تک‌برگ", "دسترسی شهری"], expertScore: "۸.۸", expertScoreRaw: 8.8, status: "verified", order: 5 },
+  ] satisfies LandingProperty[],
+  stats: [
+    { id: 1, value: 12500, suffix: "+", label: "ملک کارشناسی‌شده", color: "#D4A843", icon: "building", order: 1 },
+    { id: 2, value: 320, suffix: "+", label: "کارشناس همراه", color: "#14B8A6", icon: "expert", order: 2 },
+    { id: 3, value: 98, suffix: "%", label: "رضایت متقاضیان", color: "#06B6D4", icon: "satisfaction", order: 3 },
+    { id: 4, value: 42, suffix: "+", label: "شهر تحت پوشش", color: "#D4A843", icon: "city", order: 4 },
+  ] satisfies LandingStat[],
+  testimonials: [
+    { id: 1, name: "نگار رضایی", role: "مالک ملک مسکونی", text: "فرایند ثبت درخواست خیلی روشن بود و گزارش کارشناسی را زودتر از زمانی که انتظار داشتم دریافت کردم.", rating: 5, propertyType: "آپارتمان مسکونی", avatarUrl: null, order: 1 },
+    { id: 2, name: "امیرحسین مرادی", role: "سرمایه‌گذار ملکی", text: "ارزیابی جزئیات خوبی داشت و توضیحات کارشناس کمک کرد تصمیم دقیق‌تری بگیرم.", rating: 5, propertyType: "واحد اداری", avatarUrl: null, order: 2 },
+    { id: 3, name: "سارا کاظمی", role: "متقاضی کارشناسی", text: "پیگیری مراحل ساده بود و در تمام مسیر می‌دانستم درخواست در چه وضعیتی قرار دارد.", rating: 4, propertyType: "ویلای شهرکی", avatarUrl: null, order: 3 },
+  ] satisfies LandingTestimonial[],
+  cities: [
+    { id: 1, name: "تهران", count: "۴٬۸۲۰", countRaw: 4820, x: 318, y: 142, color: "#D4A843", size: "lg", order: 1 },
+    { id: 2, name: "اصفهان", count: "۱٬۲۶۰", countRaw: 1260, x: 258, y: 232, color: "#14B8A6", size: "md", order: 2 },
+    { id: 3, name: "شیراز", count: "۹۴۰", countRaw: 940, x: 205, y: 318, color: "#06B6D4", size: "md", order: 3 },
+    { id: 4, name: "مشهد", count: "۱٬۱۱۰", countRaw: 1110, x: 425, y: 190, color: "#D4A843", size: "md", order: 4 },
+    { id: 5, name: "تبریز", count: "۶۸۰", countRaw: 680, x: 190, y: 94, color: "#14B8A6", size: "sm", order: 5 },
+    { id: 6, name: "رشت", count: "۵۲۰", countRaw: 520, x: 270, y: 105, color: "#06B6D4", size: "sm", order: 6 },
+  ] satisfies LandingCity[],
+  timeline: [
+    { id: 1, title: "ثبت درخواست", subtitle: "شروع آنلاین", description: "نوع ملک و خدمات مورد نیاز را انتخاب کنید و اطلاعات اولیه را ثبت کنید.", duration: "۵ دقیقه", icon: "form", order: 1 },
+    { id: 2, title: "بررسی اطلاعات", subtitle: "تطبیق درخواست", description: "جزئیات درخواست بررسی می‌شود تا کارشناس مناسب انتخاب شود.", duration: "۱ روز کاری", icon: "analyze", order: 2 },
+    { id: 3, title: "تعیین کارشناس", subtitle: "تخصص مرتبط", description: "کارشناس رسمی متناسب با موقعیت و نوع ملک به درخواست شما اختصاص می‌یابد.", duration: "۱ روز کاری", icon: "expert", order: 3 },
+    { id: 4, title: "بازدید و ارزیابی", subtitle: "بررسی میدانی", description: "کارشناس از ملک بازدید کرده و مدارک و شرایط آن را ارزیابی می‌کند.", duration: "با هماهنگی شما", icon: "inspect", order: 4 },
+    { id: 5, title: "دریافت گزارش", subtitle: "نتیجه کارشناسی", description: "گزارش نهایی پس از تکمیل بررسی در پنل شما قرار می‌گیرد.", duration: "۲ تا ۳ روز کاری", icon: "report", order: 5 },
+  ] satisfies LandingTimeline[],
+  gallery: [
+    { id: 1, title: "نمای کلی پنل", description: "نمایش یکپارچه درخواست‌ها و گزارش‌ها", color: "#D4A843", gridColSpan: 2, gridRowSpan: 2, order: 1 },
+    { id: 2, title: "پیگیری درخواست", description: "مشاهده آخرین وضعیت کارشناسی", color: "#14B8A6", gridColSpan: 1, gridRowSpan: 1, order: 2 },
+    { id: 3, title: "گزارش ملک", description: "دسترسی به جزئیات ارزیابی", color: "#06B6D4", gridColSpan: 1, gridRowSpan: 1, order: 3 },
+    { id: 4, title: "مدارک دیجیتال", description: "آرشیو امن اسناد و فایل‌ها", color: "#D4A843", gridColSpan: 1, gridRowSpan: 1, order: 4 },
+  ] satisfies LandingGallery[],
+  propertyTypes: [
+    { id: 1, name: "آپارتمان", order: 1 },
+    { id: 2, name: "ویلایی", order: 2 },
+    { id: 3, name: "زمین", order: 3 },
+    { id: 4, name: "تجاری", order: 4 },
+    { id: 5, name: "اداری", order: 5 },
+    { id: 6, name: "باغ", order: 6 },
+  ] satisfies LandingPropertyType[],
+};

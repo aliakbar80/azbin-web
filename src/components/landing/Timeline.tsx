@@ -59,7 +59,7 @@ export default function Timeline() {
         },
       },
     });
-  }, { scope: sectionRef });
+  }, { scope: sectionRef, dependencies: [steps.length], revertOnUpdate: true });
 
   return (
     <section ref={sectionRef} className="relative py-28 landing-section-padding">
